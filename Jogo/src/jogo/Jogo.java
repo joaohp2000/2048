@@ -16,7 +16,7 @@ import javax.swing.*;
 public class Jogo {
         public static int matriz1[][] = new int [4][4];
         public static JLabel quad1[][]= new JLabel [4][4];
-        
+        public static int pontuação;
     /**
      * @param args the command line arguments
      */

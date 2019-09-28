@@ -18,12 +18,21 @@ public class Matriz {
      int matriz[][] = new int [4][4];
      int contador=0; int num;
      Random random= new Random(); 
-
+     int pontuação;
     public Matriz(int matriz[][]) {
         this.matriz=matriz;
         
     }
-
+    public void zera(int matriz[][]){
+      for(i=0;i<4;i++){
+        for(j=0;j<4;j++){
+               matriz[i][j]=0;
+           }
+       }
+      
+      inserir_matriz(matriz);
+      inserir_matriz(matriz);
+    }
    
     
      
