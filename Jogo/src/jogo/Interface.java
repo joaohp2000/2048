@@ -28,7 +28,7 @@ public class  Interface {
    JButton botao_baixo = new JButton("");
    JButton botao_esq = new JButton("");
    JButton botao_dir = new JButton("");
-
+   JButton novo_g = new JButton("Novo Jogo");
     public Interface() {
     }
    
@@ -40,7 +40,8 @@ public class  Interface {
     //Inicializa o vetor de Jlabel com os valores da matriz1; 
     public Interface(JFrame janela, int matriz[][], JLabel quad[][]) {
         JButton botoes[] = new JButton [4]; 
-        ButtonHandler handler = new ButtonHandler(botao_cima, botao_baixo, botao_esq,botao_dir,quad1);
+        
+        ButtonHandler handler = new ButtonHandler(botao_cima, botao_baixo, botao_esq,botao_dir,novo_g,quad1);
         
         int x,y;
        
@@ -58,17 +59,20 @@ public class  Interface {
         botao_esq.setBounds(50,height/2,20,20);
         botao_dir.setBounds(500,height/2,20,20);
         
+        novo_g.setBounds(10,10,100,20);
+        
         botao_cima.setBorderPainted(true);
         botao_cima.addActionListener(handler);
         botao_baixo.addActionListener(handler);
         botao_esq.addActionListener(handler);
         botao_dir.addActionListener(handler);
+        novo_g.addActionListener(handler);
         
         janela.add(botao_baixo);
         janela.add(botao_esq);
         janela.add(botao_dir);       
         janela.add(botao_cima);
-        
+        janela.add(novo_g);
       y=height/2-165;
         for(int i=0;i<4;i++){
            x=height/2-115;
