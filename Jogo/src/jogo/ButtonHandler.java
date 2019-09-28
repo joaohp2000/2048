@@ -14,15 +14,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-
+import javax.swing.JFrame;
 import static jogo.Jogo.matriz1;
 
 public class ButtonHandler implements ActionListener{
  private JButton ok, novo ,cima, baixo, esq, dir;
  Matriz teste = new Matriz(matriz1);
+
  Interface janela = new Interface();
  JLabel quad[][]= new JLabel [4][4];
  char in;
+ 
 public ButtonHandler(JButton cima, JButton baixo, JButton esq, JButton dir ,JButton novo_jogo,JLabel quad[][]) {
         this.quad=quad;
         this.cima = cima;
@@ -31,6 +33,8 @@ public ButtonHandler(JButton cima, JButton baixo, JButton esq, JButton dir ,JBut
         this.dir = dir;
         this.novo = novo_jogo;
     }
+
+    
  
  
 
@@ -40,31 +44,31 @@ public ButtonHandler(JButton cima, JButton baixo, JButton esq, JButton dir ,JBut
     teste.cima(matriz1);
     janela.executa(matriz1,quad);
     System.out.append("cima");
-    teste.inserir_matriz(matriz1);
-    janela.executa(matriz1,quad);
+    
   }
   if(evento.getSource() == baixo)
    teste.baixo(matriz1);
     janela.executa(matriz1,quad);
-    teste.inserir_matriz(matriz1);
-    janela.executa(matriz1,quad);
+    
  
  if(evento.getSource() == esq){
    teste.esquerda(matriz1);
     janela.executa(matriz1,quad);
-    teste.inserir_matriz(matriz1);
-    janela.executa(matriz1,quad);
+    
  }
 if(evento.getSource() == dir){
    teste.direita(matriz1);
     janela.executa(matriz1,quad);
-    teste.inserir_matriz(matriz1);
-    janela.executa(matriz1,quad);
+   
  }
+teste.inserir_matriz(matriz1);
+    janela.executa(matriz1,quad);
 if(evento.getSource() == novo){
     teste.zera(matriz1);
     janela.executa(matriz1,quad);
 }
+
  }
+
 }
 

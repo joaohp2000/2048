@@ -18,7 +18,7 @@ public class Matriz {
      int matriz[][] = new int [4][4];
      int contador=0; int num;
      Random random= new Random(); 
-     int pontuação;
+     public static  int pontuação=0;
     public Matriz(int matriz[][]) {
         this.matriz=matriz;
         
@@ -29,7 +29,7 @@ public class Matriz {
                matriz[i][j]=0;
            }
        }
-      
+      pontuação=0;
       inserir_matriz(matriz);
       inserir_matriz(matriz);
     }
@@ -78,6 +78,11 @@ public class Matriz {
     
     
 }     
+
+    public static int getPontuação() {
+        return pontuação;
+    }
+     
      //funcao printar matriz
   public void printar_matriz(int matriz[][]){ 
      this.matriz=matriz;
@@ -118,7 +123,7 @@ public class Matriz {
                if(this.matriz[i][j]==this.matriz[i+1][j]){
                    this.matriz[i][j]=this.matriz[i+1][j]*2;
                    this.matriz[i+1][j]=0;
-                   
+                   pontuação=pontuação+this.matriz[i][j];
                  //  printar_matriz(this.matriz);
                }
                
@@ -177,6 +182,7 @@ public class Matriz {
                if(this.matriz[i][j]==this.matriz[i-1][j]){
                    this.matriz[i][j]=this.matriz[i-1][j]*2;
                    this.matriz[i-1][j]=0;
+                   pontuação=pontuação+this.matriz[i][j];
                    
                  //  printar_matriz(this.matriz);
                }
@@ -233,6 +239,7 @@ public class Matriz {
                if(this.matriz[i][j]==this.matriz[i][j-1]){
                    this.matriz[i][j]=this.matriz[i][j]*2;
                    this.matriz[i][j-1]=0;
+                   pontuação=pontuação+this.matriz[i][j];
                    
                  //  printar_matriz(this.matriz);
                }
@@ -287,7 +294,7 @@ public class Matriz {
                if(this.matriz[i][j]==this.matriz[i][j+1]){
                    this.matriz[i][j]=this.matriz[i][j]*2;
                    this.matriz[i][j+1]=0;
-                   
+                   pontuação=pontuação+this.matriz[i][j];
                  //  printar_matriz(this.matriz);
                }
                
