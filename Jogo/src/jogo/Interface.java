@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*; 	
 import javax.swing.JFrame;
 import static jogo.Jogo.matriz1;
@@ -31,25 +33,66 @@ public class  Interface extends JFrame {
    static int height;
    static int width;
    ImageIcon N = new ImageIcon("n.jpg");
-   JButton botao_cima = new JButton(N);
-   JButton botao_baixo = new JButton("");
-   JButton botao_esq = new JButton("");
-   JButton botao_dir = new JButton("");
-   JButton novo_g = new JButton("Novo Jogo");
-
+   
+   //Botoes
+    JLabel cima = new JLabel("cima");
+    JLabel baixo = new JLabel("baixo");
+    JLabel esq = new JLabel("esquerda");
+    JLabel dir = new JLabel("direita");
+    JLabel novo = new JLabel("Novo_Jogo"); 
     public Interface() {
     }
-
-    
-  
    
-  
    //evento teclado e incializa a frame do jogo
     public  Interface(int matriz[][], JLabel quad[][],String title) throws HeadlessException{
         super(title);
         this.quad=quad;
         this.matriz=matriz;
         
+       //Usando mouse
+         //Comandos do Mouse
+          cima.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+             teste.cima(matriz1);
+            executa(matriz1,quad);
+            teste.inserir_matriz(matriz1);
+            executa(matriz1,quad);
+        }
+});
+           baixo.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.baixo(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+});
+          esq.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.esquerda(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+});
+          dir.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.direita(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+});
+          novo.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.zera(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+}); 
+       
+        //Usando teclado
        addKeyListener(new KeyAdapter(){
             
            
@@ -97,7 +140,7 @@ public class  Interface extends JFrame {
         //pontuação pont = new pontuação(janela, pontuação);
          
        
-        ButtonHandler handler = new ButtonHandler(botao_cima, botao_baixo, botao_esq,botao_dir,novo_g,quad1);
+       
  
         
         ImageIcon back = new ImageIcon("background.png");
@@ -108,28 +151,19 @@ public class  Interface extends JFrame {
         width= getWidth();
         
         
-        botao_cima.setBounds(width/2,50,53,56);
-        botao_baixo.setBounds(width/2,500,20,20);
-        botao_esq.setBounds(50,height/2,20,20);
-        botao_dir.setBounds(500,height/2,20,20);
-       
-        novo_g.setBounds(10,10,100,20);
+        cima.setBounds(width/2,50,53,56);
+        baixo.setBounds(width/2,500,20,20);
+        esq.setBounds(50,height/2,20,20);
+        dir.setBounds(500,height/2,20,20);
+        novo.setBounds(10,10,100,20);
         
+        add(baixo);
+        add(esq);
+        add(dir);       
+        add(cima);
+        add(novo);
         
-        botao_cima.setBorderPainted(true);
-        botao_cima.addActionListener(handler);
-        botao_baixo.addActionListener(handler);
-        botao_esq.addActionListener(handler);
-        botao_dir.addActionListener(handler);
-        novo_g.addActionListener(handler);
-        
-        add(botao_baixo);
-        add(botao_esq);
-        add(botao_dir);       
-        add(botao_cima);
-        add(novo_g);
-        
-        Color fund = new Color(226,179,107);
+        Color fund = new Color(0,0,0);
         getContentPane().setBackground(fund);
         inicializa(this.matriz,this.quad);
         

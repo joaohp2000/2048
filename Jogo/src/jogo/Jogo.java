@@ -27,8 +27,9 @@ public class Jogo {
         teste.inserir_matriz(matriz1);
         teste.inserir_matriz(matriz1);
         
-    
-        Interface jan = new Interface(matriz1,quad1,"2048");
+    First_face inicio= new First_face();
+    inicio.First_Face();
+       
         
        
     }

@@ -1,0 +1,68 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jogo;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.ImageIcon;
+import static jogo.Jogo.matriz1;
+import static jogo.Jogo.quad1;
+
+/**
+ *
+ * @author carlo
+ */
+public class First_face {
+    
+         JLabel Iniciar = new JLabel("Iniciar");
+         JLabel Creditos = new JLabel("Creditos");
+       // ImageIcon fundo = new ImageIcon("ERROR.png");
+        //JLabel fundoI = new JLabel(fundo);
+        
+       //Pegando clique na label
+    public void First_Face(){
+            JFrame jf = new JFrame();
+            
+            
+      Iniciar.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+             Interface jan = new Interface(matriz1,quad1,"2048");
+             jf.setVisible(false);
+        }
+});
+      
+       Creditos.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+           System.out.println("jao corno");
+        }
+});
+
+    //label    
+    jf.setFocusable(true);
+    Iniciar.setBounds(10,200,45,20);
+    Creditos.setBounds(11,11,45,20);
+
+    jf.add(Iniciar);
+    jf.add(Creditos);  
+  
+      
+      
+       //jf.add(fundoI);
+      // jf.setIconImage(fundo);
+      //Janela
+    jf.setTitle("MENU");
+    jf.setSize(600,600);
+    jf.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+    jf.setVisible(true);
+    
+        }
+}
+   
