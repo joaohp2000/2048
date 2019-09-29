@@ -25,25 +25,22 @@ public class  Interface extends JFrame {
         
    //Teclado2 janela = new Teclado2();
    JLabel quad[][]= new JLabel [4][4];
-   JLabel pontuação =new JLabel();
+   JLabel pontuação =new JLabel("Pontuação:");
    int matriz[][]= new int [4][4];
    Matriz teste =new Matriz(matriz);
    static int height;
    static int width;
-   ImageIcon N = new ImageIcon("n.jpg");
-   JButton botao_cima = new JButton(N);
+   //ImageIcon N = new ImageIcon("n.jpg");
+   JButton botao_cima = new JButton("");
    JButton botao_baixo = new JButton("");
    JButton botao_esq = new JButton("");
    JButton botao_dir = new JButton("");
    JButton novo_g = new JButton("Novo Jogo");
 
+   banco_numero numero = new banco_numero();
     public Interface() {
     }
 
-    
-  
-   
-  
    //evento teclado e incializa a frame do jogo
     public  Interface(int matriz[][], JLabel quad[][],String title) throws HeadlessException{
         super(title);
@@ -100,7 +97,7 @@ public class  Interface extends JFrame {
         ButtonHandler handler = new ButtonHandler(botao_cima, botao_baixo, botao_esq,botao_dir,novo_g,quad1);
  
         
-        ImageIcon back = new ImageIcon("background.png");
+        ImageIcon back = new ImageIcon("Grid.png");
         String mat[][]=new String [4][4];
         JLabel fundo = new JLabel(back);
      
@@ -108,7 +105,7 @@ public class  Interface extends JFrame {
         width= getWidth();
         
         
-        botao_cima.setBounds(width/2,50,53,56);
+        botao_cima.setBounds(width/2,50,20,20);
         botao_baixo.setBounds(width/2,500,20,20);
         botao_esq.setBounds(50,height/2,20,20);
         botao_dir.setBounds(500,height/2,20,20);
@@ -129,12 +126,13 @@ public class  Interface extends JFrame {
         add(botao_cima);
         add(novo_g);
         
-        Color fund = new Color(226,179,107);
+        Color fund = new Color(255,255,255);
         getContentPane().setBackground(fund);
         inicializa(this.matriz,this.quad);
-        
+        add(pontuação);
+        pontuação.setBounds(400, 10,130,20);
         add(fundo);
-        fundo.setBounds(height/2-175,width/2-175,350,350);
+        fundo.setBounds(125,125,350,350);
         
         
         
@@ -145,41 +143,55 @@ public class  Interface extends JFrame {
     //atualiza o vetor de Jlabel com os valores da marteiz1
     public void executa(int matriz[][], JLabel quad[][]) {
          this.quad=quad;
-         //pontuação pont =new pontuação(pontuação);
-        String mat[][]=new String [4][4];
-        int x,y;
-        y=height/2-165;
+         String pont = Integer.toString(Matriz.getPontuação());
+         pont = "pontuação:"+pont;
+         pontuação.setText(pont);
+         
+        
+        int x1,y1=150;
+        
         for(int i=0;i<4;i++){
-            x=height/2-115;
+            x1=150;
             for(int j=0;j<4;j++){
-                mat[i][j] = Integer.toString(matriz[i][j]);
-                this.quad[i][j].setBounds(x,y,100,100);
-                this.quad[i][j].setText(mat[i][j]);
-                x=x+75;
+                this.quad[i][j].setIcon(null);
+                this.quad[i][j].setBounds(x1,y1,70,70);
+                 if(matriz[i][j]!=0){
+                  this.quad[i][j].setIcon(numero.getLabel(matriz[i][j]));
+                 }
+ 
+                 x1=x1+79;
             }
-            y=y+75;
+            y1=y1+80;
         }
+        
         //pont.pontua();
     }
    //Inicializa o vetor de Jlabel com os valores da matriz1; 
-    private void inicializa(int matriz[][], JLabel quad[][]){
+    public void inicializa(int matriz[][], JLabel quad[][]){
        String mat[][]=new String [4][4];
         this.quad=quad;
-        int x,y;
-        y=height/2-165;
+        int x,y, x1,y1=150;
+        y=height/2-175;
+        pontuação.setText("Pontuação:");
         for(int i=0;i<4;i++){
-           x=height/2-115;
+           x1=150;
+           x=height/2-175;
             for(int j=0;j<4;j++){
-                  
-                mat[i][j] = Integer.toString(matriz[i][j]);
-                this.quad[i][j] = new JLabel(mat[i][j]);
+                 if(matriz[i][j]!=0){
+                  this.quad[i][j] = new JLabel(numero.getLabel(matriz[i][j]));
+                 }
+                 else{
+                   this.quad[i][j] = new JLabel();
+                 }
+               // mat[i][j] = Integer.toString(matriz[i][j]);
+                 //new JLabel(mat[i][j]);
               // this.quad[i][j].setText(mat[i][j]);
-                this.quad[i][j].setBounds(x,y,100,100);
+                this.quad[i][j].setBounds(x1,y1,70,70);
                 add(quad[i][j]);
-               x=x+75;
+               x1=x1+80;
 
             }
-            y=y+75;
+            y1=y1+80;
         }
     }
 }

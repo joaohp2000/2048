@@ -14,7 +14,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JFrame;
 import static jogo.Jogo.matriz1;
 
 public class ButtonHandler implements ActionListener{

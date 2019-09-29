@@ -94,30 +94,70 @@ public class Matriz {
                 System.out.printf("\n");
                         }
     }
+  int soma=0;
+  public void _cima(int i){
+      if(i==0) return;
+      else{
+          if(this.matriz[i-1][j]==this.matriz[i][j] ){
+               this.matriz[i-1][j]=2*this.matriz[i][j];
+                this.matriz[i][j]=0;   
+              _cima(i-1);
+          }
+          if(this.matriz[i-1][j]==0){
+              this.matriz[i-1][j]=this.matriz[i][j];
+              this.matriz[i][j]=0;
+              _cima(i-1);
+          }
+          _cima(i-1);
+      }
+  }
+   public void _baixo(int i){
+      if(i==3) return;
+      else{
+          if(this.matriz[i+1][j]==0){
+              this.matriz[i+1][j]=this.matriz[i][j];
+              this.matriz[i][j]=0;
+              _baixo(i+1);
+          }
+          _baixo(i+1);
+      }
+  }
+   public void _esquerda(int j){
+       if(j==0) return;
+      else{
+          if(this.matriz[i][j-1]==0){
+              this.matriz[i][j-1]=this.matriz[i][j];
+              this.matriz[i][j]=0;
+              _esquerda(j-1);
+          }
+          _esquerda(j-1);
+      }
+  }
+   public void _direita(int j){
+       if(j==3) return;
+      else{
+          if(this.matriz[i][j+1]==0){
+              this.matriz[i][j+1]=this.matriz[i][j];
+              this.matriz[i][j]=0;
+              _direita(j+1);
+          }
+          _direita(j+1);
+      }
+  }
+   
   //  desloca a matriz para cima e soma
    public void cima(int matriz[][]){
        this.matriz=matriz;
-       int aux;
-       
-           for(j=0;j<4;j++){ // Desloca os valores para cima
-               for(i=3;i>0;i--){
-               if(this.matriz[i-1][j]==0){
-                   this.matriz[i-1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
-                 //  printar_matriz(this.matriz);
-               }
+            
+           for(j=0;j<4;j++){
+               soma=0;
+               // Desloca os valores para cima
+               for(i=0;i<4;i++){
+               _cima(i);
            }
        }
-           for(j=0;j<4;j++){ // Desloca os valores para cima de novo pra ter certeza
-               for(i=3;i>0;i--){
-               if(this.matriz[i-1][j]==0){
-                   this.matriz[i-1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
-           
+         
+         
             for(j=0;j<4;j++){ // FAZ A SOMA DOS VALORES IGUAIS E COLOCA ZERO 
                for(i=0;i<3;i++){
                if(this.matriz[i][j]==this.matriz[i+1][j]){
@@ -129,54 +169,24 @@ public class Matriz {
                
            }
        }
-            for(j=0;j<4;j++){
-               for(i=3;i>0;i--){
-               if(this.matriz[i-1][j]==0){
-                   this.matriz[i-1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
-                 //  printar_matriz(this.matriz);
-               }
+           for(j=0;j<4;j++){ // Desloca os valores para cima
+               for(i=0;i<4;i++){
+               _cima(i);
            }
        }
-          
-        for(j=0;j<4;j++){
-               for(i=3;i>0;i--){
-               if(this.matriz[i-1][j]==0){
-                   this.matriz[i-1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
-        
-       
-       
+
         
    } 
    //desloca a matriz para baixo e soma
    public void baixo(int matriz[][]){
        this.matriz=matriz;
-       int aux;
-       
            for(j=0;j<4;j++){
-               for(i=0;i<3;i++){
-               if(this.matriz[i+1][j]==0){
-                   this.matriz[i+1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
+               for(i=3;i>=0;i--){
+               _baixo(i);
                  //  printar_matriz(this.matriz);
                }
            }
-       }
-           
-       for(j=0;j<4;j++){
-               for(i=0;i<3;i++){
-               if(this.matriz[i+1][j]==0){
-                   this.matriz[i+1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
+ 
             for(j=0;j<4;j++){
                for(i=3;i>0;i--){
                if(this.matriz[i][j]==this.matriz[i-1][j]){
@@ -185,55 +195,26 @@ public class Matriz {
                    pontuação=pontuação+this.matriz[i][j];
                    
                  //  printar_matriz(this.matriz);
-               }
-               
+               }  
            }
        }
-            for(j=0;j<4;j++){
-                for(i=0;i<3;i++){
-               if(this.matriz[i+1][j]==0){
-                   this.matriz[i+1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
+          for(j=0;j<4;j++){
+               for(i=3;i>=0;i--){
+               _baixo(i);
                  //  printar_matriz(this.matriz);
                }
            }
-       }
-            for(j=0;j<4;j++){
-               for(i=0;i<3;i++){
-               if(this.matriz[i+1][j]==0){
-                   this.matriz[i+1][j]=this.matriz[i][j];
-                   this.matriz[i][j]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
-     
    } 
    //desloca matriz para direita e soma
    public void direita(int matriz[][]){
        this.matriz=matriz;
-       int aux;
-       
+   
        for(i=0;i<4;i++){
-           for(j=3;j>0;j--){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j-1];
-                   this.matriz[i][j-1]=0;
-                 //  printar_matriz(this.matriz);
-               }
+           for(j=3;j>=0;j--){
+              _direita(j);
            }
        }
            
-       for(i=0;i<4;i++){
-           for(j=3;j>0;j--){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j-1];
-                   this.matriz[i][j-1]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
-      
             for(i=0;i<4;i++){
                 for(j=3;j>0;j--){
                if(this.matriz[i][j]==this.matriz[i][j-1]){
@@ -243,25 +224,11 @@ public class Matriz {
                    
                  //  printar_matriz(this.matriz);
                }
-               
            }
        }
-         for(i=0;i<4;i++){
-           for(j=3;j>0;j--){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j-1];
-                   this.matriz[i][j-1]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
-        for(i=0;i<4;i++){
-           for(j=3;j>0;j--){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j-1];
-                   this.matriz[i][j-1]=0;
-                 //  printar_matriz(this.matriz);
-               }
+          for(i=0;i<4;i++){
+           for(j=3;j>=0;j--){
+              _direita(j);
            }
        }
    } 
@@ -270,25 +237,11 @@ public class Matriz {
        this.matriz=matriz;
        
        for(i=0;i<4;i++){
-           for(j=0;j<3;j++){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j+1];
-                   this.matriz[i][j+1]=0;
+           for(j=0;j<4;j++){
+               _esquerda(j);
                  //  printar_matriz(this.matriz);
                }
            }
-       }
-           
-       for(i=0;i<4;i++){
-           for(j=0;j<3;j++){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j+1];
-                   this.matriz[i][j+1]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
-      
             for(i=0;i<4;i++){
                 for(j=0;j<3;j++){
                if(this.matriz[i][j]==this.matriz[i][j+1]){
@@ -296,28 +249,15 @@ public class Matriz {
                    this.matriz[i][j+1]=0;
                    pontuação=pontuação+this.matriz[i][j];
                  //  printar_matriz(this.matriz);
-               }
-               
+               } 
            }
        }
-         for(i=0;i<4;i++){
-           for(j=0;j<3;j++){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j+1];
-                   this.matriz[i][j+1]=0;
+    for(i=0;i<4;i++){
+           for(j=0;j<4;j++){
+               _esquerda(j);
                  //  printar_matriz(this.matriz);
                }
            }
-       }
-        for(i=0;i<4;i++){
-           for(j=0;j<3;j++){
-               if(this.matriz[i][j]==0){
-                   this.matriz[i][j]=this.matriz[i][j+1];
-                   this.matriz[i][j+1]=0;
-                 //  printar_matriz(this.matriz);
-               }
-           }
-       }
    } 
    
 }

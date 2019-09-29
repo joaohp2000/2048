@@ -4,11 +4,7 @@
  * and open the template in the editor.
  */
 package jogo;
-import java.awt.Color;
-import java.util.Scanner;
-import javax.swing.JFrame;
 import javax.swing.*;
-import javax.swing.SwingConstants;
 
 /**
 
@@ -27,8 +23,10 @@ public class Jogo {
         teste.inserir_matriz(matriz1);
         teste.inserir_matriz(matriz1);
         
-    
-        Interface jan = new Interface(matriz1,quad1,"2048");
+        teste.printar_matriz(matriz1);
+        banco_numero test = new banco_numero();
+        //test.test();
+        Interface jann = new Interface(matriz1,quad1,"2048");
         
        
     }
