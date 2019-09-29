@@ -98,11 +98,7 @@ public class Matriz {
   public void _cima(int i){
       if(i==0) return;
       else{
-          if(this.matriz[i-1][j]==this.matriz[i][j] ){
-               this.matriz[i-1][j]=2*this.matriz[i][j];
-                this.matriz[i][j]=0;   
-              _cima(i-1);
-          }
+         
           if(this.matriz[i-1][j]==0){
               this.matriz[i-1][j]=this.matriz[i][j];
               this.matriz[i][j]=0;
