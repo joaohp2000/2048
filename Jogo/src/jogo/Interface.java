@@ -9,11 +9,13 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.*; 	
 import javax.swing.JFrame;
 import static jogo.Jogo.matriz1;
 import static jogo.Jogo.quad1;
-
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -25,28 +27,82 @@ public class  Interface extends JFrame {
         
    //Teclado2 janela = new Teclado2();
    JLabel quad[][]= new JLabel [4][4];
-   JLabel pontuação =new JLabel("Pontuação:");
+   JLabel pontuação =new JLabel();
    int matriz[][]= new int [4][4];
    Matriz teste =new Matriz(matriz);
    static int height;
    static int width;
-   //ImageIcon N = new ImageIcon("n.jpg");
-   JButton botao_cima = new JButton("");
-   JButton botao_baixo = new JButton("");
-   JButton botao_esq = new JButton("");
-   JButton botao_dir = new JButton("");
-   JButton novo_g = new JButton("Novo Jogo");
-
-   banco_numero numero = new banco_numero();
+   
+   //Imagens
+   ImageIcon N = new ImageIcon("n.png");
+   ImageIcon S = new ImageIcon("s.png");
+   ImageIcon W = new ImageIcon("w.png");
+   ImageIcon E = new ImageIcon("e.png");
+   ImageIcon rosa = new ImageIcon("ros.png");
+   JLabel symbol = new JLabel(rosa);
+  
+   //Botoes
+    JLabel cima = new JLabel(N);
+    JLabel baixo = new JLabel(S);
+    JLabel esq = new JLabel(W);
+    JLabel dir = new JLabel(E);
+    JLabel novo = new JLabel("Novo_Jogo"); 
+    
+    //colocando imagem nos numeros
+     banco_numero numero = new banco_numero();
     public Interface() {
     }
-
+   
    //evento teclado e incializa a frame do jogo
     public  Interface(int matriz[][], JLabel quad[][],String title) throws HeadlessException{
         super(title);
         this.quad=quad;
         this.matriz=matriz;
         
+       //Usando mouse
+         //Comandos do Mouse
+          cima.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+             teste.cima(matriz1);
+            executa(matriz1,quad);
+            teste.inserir_matriz(matriz1);
+            executa(matriz1,quad);
+        }
+});
+           baixo.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.baixo(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+});
+          esq.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.esquerda(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+});
+          dir.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.direita(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+});
+          novo.addMouseListener(new MouseAdapter(){
+        public void mouseClicked(MouseEvent evento){
+                teste.zera(matriz1);
+                executa(matriz1,quad);
+                teste.inserir_matriz(matriz1);
+                executa(matriz1,quad);
+        }
+}); 
+       
+        //Usando teclado
        addKeyListener(new KeyAdapter(){
             
            
@@ -94,10 +150,10 @@ public class  Interface extends JFrame {
         //pontuação pont = new pontuação(janela, pontuação);
          
        
-        ButtonHandler handler = new ButtonHandler(botao_cima, botao_baixo, botao_esq,botao_dir,novo_g,quad1);
+       
  
         
-        ImageIcon back = new ImageIcon("Grid.png");
+        ImageIcon back = new ImageIcon("gridw.png");
         String mat[][]=new String [4][4];
         JLabel fundo = new JLabel(back);
      
@@ -105,34 +161,26 @@ public class  Interface extends JFrame {
         width= getWidth();
         
         
-        botao_cima.setBounds(width/2,50,20,20);
-        botao_baixo.setBounds(width/2,500,20,20);
-        botao_esq.setBounds(50,height/2,20,20);
-        botao_dir.setBounds(500,height/2,20,20);
-       
-        novo_g.setBounds(10,10,100,20);
+        cima.setBounds(54,387,53,56);
+        baixo.setBounds(71,537,20,20);
+        dir.setBounds(137,471,20,20);
+        esq.setBounds(2,467,20,20);
+        novo.setBounds(10,10,100,20);
+        symbol.setBounds(-20,380,200,200);
         
+        add(baixo);
+        add(esq);
+        add(dir);       
+        add(cima);
+        add(novo);
+        add(symbol);
         
-        botao_cima.setBorderPainted(true);
-        botao_cima.addActionListener(handler);
-        botao_baixo.addActionListener(handler);
-        botao_esq.addActionListener(handler);
-        botao_dir.addActionListener(handler);
-        novo_g.addActionListener(handler);
-        
-        add(botao_baixo);
-        add(botao_esq);
-        add(botao_dir);       
-        add(botao_cima);
-        add(novo_g);
-        
-        Color fund = new Color(255,255,255);
+        Color fund = new Color(250,250,250);
         getContentPane().setBackground(fund);
         inicializa(this.matriz,this.quad);
-        add(pontuação);
-        pontuação.setBounds(400, 10,130,20);
+        
         add(fundo);
-        fundo.setBounds(125,125,350,350);
+        fundo.setBounds(height/2-175,width/2-175,350,350);
         
         
         
@@ -143,55 +191,41 @@ public class  Interface extends JFrame {
     //atualiza o vetor de Jlabel com os valores da marteiz1
     public void executa(int matriz[][], JLabel quad[][]) {
          this.quad=quad;
-         String pont = Integer.toString(Matriz.getPontuação());
-         pont = "pontuação:"+pont;
-         pontuação.setText(pont);
-         
-        
-        int x1,y1=150;
-        
+         //pontuação pont =new pontuação(pontuação);
+        String mat[][]=new String [4][4];
+        int x,y;
+        y=height/2-165;
         for(int i=0;i<4;i++){
-            x1=150;
+            x=height/2-115;
             for(int j=0;j<4;j++){
-                this.quad[i][j].setIcon(null);
-                this.quad[i][j].setBounds(x1,y1,70,70);
-                 if(matriz[i][j]!=0){
-                  this.quad[i][j].setIcon(numero.getLabel(matriz[i][j]));
-                 }
- 
-                 x1=x1+79;
+                mat[i][j] = Integer.toString(matriz[i][j]);
+                this.quad[i][j].setBounds(x,y,100,100);
+                this.quad[i][j].setText(mat[i][j]);
+                x=x+75;
             }
-            y1=y1+80;
+            y=y+75;
         }
-        
         //pont.pontua();
     }
    //Inicializa o vetor de Jlabel com os valores da matriz1; 
-    public void inicializa(int matriz[][], JLabel quad[][]){
+    private void inicializa(int matriz[][], JLabel quad[][]){
        String mat[][]=new String [4][4];
         this.quad=quad;
-        int x,y, x1,y1=150;
-        y=height/2-175;
-        pontuação.setText("Pontuação:");
+        int x,y;
+        y=height/2-165;
         for(int i=0;i<4;i++){
-           x1=150;
-           x=height/2-175;
+           x=height/2-115;
             for(int j=0;j<4;j++){
-                 if(matriz[i][j]!=0){
-                  this.quad[i][j] = new JLabel(numero.getLabel(matriz[i][j]));
-                 }
-                 else{
-                   this.quad[i][j] = new JLabel();
-                 }
-               // mat[i][j] = Integer.toString(matriz[i][j]);
-                 //new JLabel(mat[i][j]);
+                  
+                mat[i][j] = Integer.toString(matriz[i][j]);
+                this.quad[i][j] = new JLabel(mat[i][j]);
               // this.quad[i][j].setText(mat[i][j]);
-                this.quad[i][j].setBounds(x1,y1,70,70);
+                this.quad[i][j].setBounds(x,y,100,100);
                 add(quad[i][j]);
-               x1=x1+80;
+               x=x+75;
 
             }
-            y1=y1+80;
+            y=y+75;
         }
     }
 }
