@@ -136,6 +136,9 @@ public class  Interface extends JFrame {
                         System.out.println("esquerda");
                         break;
                 }
+                
+                    
+               
                 teste.inserir_matriz(matriz1);
                executa(matriz1,quad);
                 
@@ -181,7 +184,8 @@ public class  Interface extends JFrame {
         add(cima);
         add(novo);
         add(symbol);
-        
+        add(pontuação);
+        pontuação.setBounds(500,10,90,20);
         
         Color fund = new Color(250,250,250);
         getContentPane().setBackground(fund);
@@ -210,7 +214,7 @@ public class  Interface extends JFrame {
             x1=150;
             for(int j=0;j<4;j++){
                 this.quad[i][j].setIcon(null);
-                this.quad[i][j].setBounds(x1,y1,70,70);
+                this.quad[i][j].setBounds(x1,y1,73,74);
                  if(matriz[i][j]!=0){
                   this.quad[i][j].setIcon(numero.getLabel(matriz[i][j]));
                  }
@@ -220,18 +224,20 @@ public class  Interface extends JFrame {
             y1=y1+80;
         }
         
+         
+        
         //pont.pontua();
     }
    //Inicializa o vetor de Jlabel com os valores da matriz1; 
     public void inicializa(int matriz[][], JLabel quad[][]){
        String mat[][]=new String [4][4];
         this.quad=quad;
-        int x,y, x1,y1=147;
-        y=height/2-175;
+        int x1,y1=147;
+        
         pontuação.setText("Pontuação:");
         for(int i=0;i<4;i++){
            x1=150;
-           x=height/2-175;
+          
             for(int j=0;j<4;j++){
                  if(matriz[i][j]!=0){
                   this.quad[i][j] = new JLabel(numero.getLabel(matriz[i][j]));
@@ -242,12 +248,14 @@ public class  Interface extends JFrame {
                // mat[i][j] = Integer.toString(matriz[i][j]);
                  //new JLabel(mat[i][j]);
               // this.quad[i][j].setText(mat[i][j]);
-                this.quad[i][j].setBounds(x1,y1,74,70);
+                this.quad[i][j].setBounds(x1,y1,73,74);
                 add(quad[i][j]);
-               x1=x1+80;
-
+               x1=x1+79;
             }
             y1=y1+80;
         }
     }
+    
+   
 }
+
