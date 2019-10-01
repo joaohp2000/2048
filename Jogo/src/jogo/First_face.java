@@ -74,6 +74,7 @@ public class First_face {
       //Janela
     jf.setTitle("MENU");
     jf.setSize(600,600);
+    jf.setLocationRelativeTo(null);
     jf.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     jf.setVisible(true);
     

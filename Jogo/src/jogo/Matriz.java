@@ -38,7 +38,7 @@ public class Matriz {
 
      Random random= new Random(); 
      Animação desliza =new Animação();
-     public static  int pontuação=0;
+      int pontuação=0;
 
     public Matriz(int matriz[][]) {
 
@@ -71,21 +71,21 @@ public class Matriz {
 
          
 
-        double numero = random.nextDouble() *4 ;
+        int numero = random.nextInt(4) ;
 
-            i=(int) numero;
+            i= numero;
 
 
 
-        double numero2 = random.nextDouble() *4 ;
+        int numero2 = random.nextInt(4);
 
-            j=(int) numero2;
+            j=numero2;
 
         
 
-        double numero3 = random.nextDouble() *4 ;
+        int numero3 = random.nextInt(8) ;
 
-            num=(int) numero3;
+            num=numero3;
 
      }
 
@@ -93,62 +93,23 @@ public class Matriz {
      //funcao inserir na matriz
 
      public void inserir_matriz(int matriz[][]){
-
+         
          this.matriz=matriz;
-
+         if(verifica(this.matriz)==0){
          gerar_randomico();
-
-         if(num==2)
-
-         {
-
-            if(matriz[i][j]==0)
-
-            {
-
-                matriz[i][j]=4;
-
-            }
-
-        
-
+         if(matriz[i][j]==0){
+             if(num==4) matriz[i][j]=4;
+             else matriz[i][j]=2;
          }
-
-         else
-
-         {
-
-             if(matriz[i][j]==0)
-
-            {
-
-                matriz[i][j]=2;
-
-            }
-
-             else
-
-             {
-
-                 inserir_matriz(this.matriz);
-
-
-
-             }
-
-        
-
+         else inserir_matriz(this.matriz);
          }
+        }
 
     
 
-    
+    public int getPontuação() {
 
-}     
-
-    public static int getPontuação() {
-
-        return pontuação;
+        return this.pontuação;
 
     }
 
@@ -342,12 +303,37 @@ public class Matriz {
            for(j=0;j<4;j++){
                _esquerda(j);
                  //  printar_matriz(this.matriz);
-               }
+              }
+}}
 
-           }
-
-   } 
-
-   
-
+   public int verifica(int matriz[][]){
+        int aux[][] = new int [4][4];
+        int pont = this.pontuação;
+        int i =0,j=0, flag=0;
+        for(i=0;i<4;i++){
+            for(j=0;j<4;j++){
+                aux[i][j]=matriz[i][j];
+                if( matriz[i][j]==0) flag =1; 
+            }
+            if(flag==1) return 0;
+        }
+           
+               cima(aux);
+               baixo(aux);
+               esquerda(aux);
+               direita(aux);
+                if(pont==pontuação){
+                    System.out.println("Perdeu!");
+                    return 1;
+                }
+                else{
+                    pontuação=pont;
+                    return 0;
+                }
+           
+           
+   }
 }
+
+
+

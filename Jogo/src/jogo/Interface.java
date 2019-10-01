@@ -101,8 +101,7 @@ public class  Interface extends JFrame {
         public void mouseClicked(MouseEvent evento){
                 teste.zera(matriz1);
                 executa(matriz1,quad);
-                teste.inserir_matriz(matriz1);
-                executa(matriz1,quad);
+
         }
 }); 
        
@@ -114,6 +113,7 @@ public class  Interface extends JFrame {
             public void keyPressed(KeyEvent teclado){
                 
                 char tecla = teclado.getKeyChar();
+               
                 switch(tecla){
                     case 'w':
                         teste.cima(matriz1);
@@ -139,8 +139,9 @@ public class  Interface extends JFrame {
                 
                     
                
-                teste.inserir_matriz(matriz1);
+               teste.inserir_matriz(matriz1);
                executa(matriz1,quad);
+               int flag = teste.verifica(matriz1);
                 
                 
             }
@@ -148,10 +149,10 @@ public class  Interface extends JFrame {
         
         
         setFocusable(true);
-        setLocationRelativeTo(null);
+        
         setResizable(false);
         setSize(600,600);
-        
+        setLocationRelativeTo(null);
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         setLayout(null); 
         setVisible(true);
@@ -185,7 +186,7 @@ public class  Interface extends JFrame {
         add(novo);
         add(symbol);
         add(pontuação);
-        pontuação.setBounds(500,10,90,20);
+        pontuação.setBounds(480,10,150,20);
         
         Color fund = new Color(250,250,250);
         getContentPane().setBackground(fund);
@@ -203,7 +204,7 @@ public class  Interface extends JFrame {
    //atualiza o vetor de Jlabel com os valores da marteiz1
     public void executa(int matriz[][], JLabel quad[][]) {
          this.quad=quad;
-         String pont = Integer.toString(Matriz.getPontuação());
+         String pont = Integer.toString(teste.getPontuação());
          pont = "pontuação:"+pont;
          pontuação.setText(pont);
          
