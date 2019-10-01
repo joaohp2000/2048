@@ -64,37 +64,5 @@ public class banco_numero {
         }
         return this.icon_2048;
     }
-    public void test(){
-        JFrame janela = new JFrame();
-        janela.setLocationRelativeTo(null);
-        janela.setResizable(false);
-        janela.setSize(600,600);
-        
-        janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        janela.setLayout(null); 
-        janela.setVisible(true);
-        int height = janela.getHeight();
-        int width= janela.getWidth();
-        ImageIcon back = new ImageIcon("Grid.png");
-       JLabel mat[][]=new JLabel [4][4];
-        
-        int x=100,y=150;
-       
-        for(int i=0;i<4;i++){
-            x=150;
-            for(int j=0;j<4;j++){
-                mat[i][j]=new JLabel(icon_2);
-                janela.add(mat[i][j]);
-                mat[i][j].setBounds(x,y,70,70);
-                x=x+80;
-            }
-            y=y+80;
-        }
-        
-        JLabel fundo = new JLabel(back);
-        janela.add(fundo);
-        fundo.setBounds(125,125,350,350);
-        
-        
-    }
+  
 }
