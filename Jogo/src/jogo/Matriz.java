@@ -37,7 +37,7 @@ public class Matriz {
      int contador=0; int num;
 
      Random random= new Random(); 
-     Animação desliza =new Animação();
+    
       int pontuação=0;
 
     public Matriz(int matriz[][]) {
@@ -95,6 +95,7 @@ public class Matriz {
      public void inserir_matriz(int matriz[][]){
          
          this.matriz=matriz;
+         if(verifica(this.matriz)==2048) System.out.println("Ganhou");
          if(verifica(this.matriz)==0){
          gerar_randomico();
          if(matriz[i][j]==0){
@@ -314,6 +315,7 @@ public class Matriz {
             for(j=0;j<4;j++){
                 aux[i][j]=matriz[i][j];
                 if( matriz[i][j]==0) flag =1; 
+                if( matriz[i][j]==2048) return 2048;
             }
             if(flag==1) return 0;
         }

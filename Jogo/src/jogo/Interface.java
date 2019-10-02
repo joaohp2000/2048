@@ -188,12 +188,12 @@ public class  Interface extends JFrame {
         add(pontuação);
         pontuação.setBounds(480,10,150,20);
         
-        Color fund = new Color(250,250,250);
-        getContentPane().setBackground(fund);
+       // Color fund = new Color(250,250,250);
+        //getContentPane().setBackground(fund);
         inicializa(this.matriz,this.quad);
         
         add(fundo);
-        fundo.setBounds(height/2-175,width/2-175,350,350);
+        fundo.setBounds(height/2-175,width/2-175,350 ,350);
         
         add(fundo2I);
         
