@@ -120,7 +120,7 @@ try{
             public void keyPressed(KeyEvent teclado){
                 
                 char tecla = teclado.getKeyChar();
-               
+               int keyCode = teclado.getKeyCode();
                 switch(tecla){
                     case 'w':
                         teste.cima(matriz1);
@@ -157,6 +157,37 @@ try{
                         Perdeu derrota = new Perdeu();
                         derrota.Perdeu(teste.getPontuação());
                         break;
+                     
+                }
+                switch(keyCode){
+                    case 40:
+                        teste.cima(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("cima");
+                        teste.inserir_matriz(matriz1);
+               executa(matriz1,quad);
+                        
+                        break;
+                    case 38:
+                        teste.baixo(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("baixo");
+                        break;
+                    case 39:
+                       teste.direita(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("direita");
+                        teste.inserir_matriz(matriz1);
+               executa(matriz1,quad);
+                        break;
+                    case 37:
+                       teste.esquerda(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("esquerda");
+                        teste.inserir_matriz(matriz1);
+               executa(matriz1,quad);
+                        break;
+                    
                 }
                 
                     
