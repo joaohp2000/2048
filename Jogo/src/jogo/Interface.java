@@ -160,7 +160,7 @@ try{
                      
                 }
                 switch(keyCode){
-                    case 40:
+                    case 38:
                         teste.cima(matriz1);
                        executa(matriz1,quad);
                         System.out.println("cima");
@@ -168,7 +168,7 @@ try{
                executa(matriz1,quad);
                         
                         break;
-                    case 38:
+                    case 40:
                         teste.baixo(matriz1);
                        executa(matriz1,quad);
                         System.out.println("baixo");
