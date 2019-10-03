@@ -105,8 +105,8 @@ public class Matriz {
          if(verifica(this.matriz)==0){
          gerar_randomico();
          if(matriz[i][j]==0){
-             if(num==4) matriz[i][j]=512;
-             else matriz[i][j]=512;
+             if(num==4) matriz[i][j]=4;
+             else matriz[i][j]=2;
          }
          else inserir_matriz(this.matriz);
          }
