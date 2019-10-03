@@ -29,7 +29,7 @@ import javax.swing.*;
 public class Matriz {
 
     //Variaveis
-
+   
      int i=0; int j=0; 
      JLabel quad[][] = new JLabel [4][4];
      int matriz[][] = new int [4][4];
@@ -93,7 +93,7 @@ public class Matriz {
      //funcao inserir na matriz
 
      public void inserir_matriz(int matriz[][]){
-         
+
          this.matriz=matriz;
          if(verifica(this.matriz)==2048) System.out.println("Ganhou");
          if(verifica(this.matriz)==0){

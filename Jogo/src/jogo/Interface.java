@@ -119,6 +119,7 @@ public class  Interface extends JFrame {
                         teste.cima(matriz1);
                        executa(matriz1,quad);
                         System.out.println("cima");
+                        
                         break;
                     case 's':
                         teste.baixo(matriz1);
@@ -217,7 +218,9 @@ public class  Interface extends JFrame {
                 this.quad[i][j].setIcon(null);
                 this.quad[i][j].setBounds(x1,y1,73,74);
                  if(matriz[i][j]!=0){
-                  this.quad[i][j].setIcon(numero.getLabel(matriz[i][j]));
+                  ImageIcon bloco =new ImageIcon(numero.getGif(matriz[i][j]));
+                  bloco.getImage().flush();
+                  this.quad[i][j].setIcon(bloco);
                  }
  
                  x1=x1+79;

@@ -28,10 +28,10 @@ public class Jogo {
         teste.inserir_matriz(matriz1);
         
       //Chamando primeiro Menu 
-    First_face inicio= new First_face();
+   First_face inicio= new First_face();
     inicio.First_Face();
        /*JFrame teste_ = new JFrame();
-        ImageIcon icon_2 = new ImageIcon("2.png");
+        ImageIcon icon_2 = new ImageIcon("4.gif");
         JLabel label_2 = new JLabel(icon_2);
         
         teste_.setFocusable(true);
@@ -46,15 +46,14 @@ public class Jogo {
         ImageIcon back = new ImageIcon("gridw2.png");
         JLabel fundo = new JLabel(back);
          teste_.add(label_2);
-         label_2.setBounds(105,105,74,74);
+         label_2.setBounds(100,100,82,82);
          
          
         teste_.add(fundo);
         fundo.setBounds(512/2-175,512/2-175,350 ,350);
-        try { Thread.sleep (2000); } catch (InterruptedException ex) {}
-        aum.aumenta(label_2);
-       
+      
        */
+      
        
     }
 }
