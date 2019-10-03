@@ -6,6 +6,7 @@
 package jogo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.HeadlessException;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -34,6 +35,7 @@ public class  Interface extends JFrame {
    static int width;
    
    //Imagens
+
    ImageIcon N = new ImageIcon("n.png");
    ImageIcon S = new ImageIcon("s.png");
    ImageIcon W = new ImageIcon("w.png");
@@ -60,9 +62,14 @@ public class  Interface extends JFrame {
    //evento teclado e incializa a frame do jogo
     public  Interface(int matriz[][], JLabel quad[][],String title) throws HeadlessException{
         super(title);
+        
+        
+try{
         this.quad=quad;
         this.matriz=matriz;
-        
+}catch(NullPointerException e){
+    System.out.println("Error");
+}
        //Usando mouse
          //Comandos do Mouse
           cima.addMouseListener(new MouseAdapter(){
@@ -119,6 +126,9 @@ public class  Interface extends JFrame {
                         teste.cima(matriz1);
                        executa(matriz1,quad);
                         System.out.println("cima");
+                        teste.inserir_matriz(matriz1);
+               executa(matriz1,quad);
+                        
                         break;
                     case 's':
                         teste.baixo(matriz1);
@@ -129,27 +139,40 @@ public class  Interface extends JFrame {
                        teste.direita(matriz1);
                        executa(matriz1,quad);
                         System.out.println("direita");
+                        teste.inserir_matriz(matriz1);
+               executa(matriz1,quad);
                         break;
                     case 'a':
                        teste.esquerda(matriz1);
                        executa(matriz1,quad);
                         System.out.println("esquerda");
+                        teste.inserir_matriz(matriz1);
+               executa(matriz1,quad);
+                        break;
+                    case 'g':
+                         Tela chamada = new Tela();
+                         chamada.Tela(teste.getPontuação());
+                         break;
+                    case 'p':
+                        Perdeu derrota = new Perdeu();
+                        derrota.Perdeu(teste.getPontuação());
                         break;
                 }
                 
                     
                
-               teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+               
                int flag = teste.verifica(matriz1);
-                
+               if(flag==2048){
+                   Tela chamada = new Tela();
+                   chamada.Tela(teste.getPontuação());
+               } 
                 
             }
         });
         
         
         setFocusable(true);
-        
         setResizable(false);
         setSize(600,600);
         setLocationRelativeTo(null);
@@ -170,7 +193,7 @@ public class  Interface extends JFrame {
         width= getWidth();
         
         
-        cima.setBounds(54,387,53,56);
+        cima.setBounds(50,383,65,65);
         baixo.setBounds(71,537,20,20);
         dir.setBounds(137,471,20,20);
         esq.setBounds(2,467,20,20);
@@ -188,12 +211,12 @@ public class  Interface extends JFrame {
         add(pontuação);
         pontuação.setBounds(480,10,150,20);
         
-        Color fund = new Color(250,250,250);
-        getContentPane().setBackground(fund);
+       // Color fund = new Color(250,250,250);
+        //getContentPane().setBackground(fund);
         inicializa(this.matriz,this.quad);
         
         add(fundo);
-        fundo.setBounds(height/2-175,width/2-175,350,350);
+        fundo.setBounds(height/2-175,width/2-175,350 ,350);
         
         add(fundo2I);
         
@@ -205,8 +228,8 @@ public class  Interface extends JFrame {
     public void executa(int matriz[][], JLabel quad[][]) {
          this.quad=quad;
          String pont = Integer.toString(teste.getPontuação());
-         pont = "pontuação:"+pont;
          pontuação.setText(pont);
+         
          
         
         int x1,y1=147;
@@ -217,7 +240,9 @@ public class  Interface extends JFrame {
                 this.quad[i][j].setIcon(null);
                 this.quad[i][j].setBounds(x1,y1,73,74);
                  if(matriz[i][j]!=0){
-                  this.quad[i][j].setIcon(numero.getLabel(matriz[i][j]));
+                  ImageIcon bloco =new ImageIcon(numero.getGif(matriz[i][j]));
+                  bloco.getImage().flush();
+                  this.quad[i][j].setIcon(bloco);
                  }
  
                  x1=x1+79;
@@ -255,6 +280,12 @@ public class  Interface extends JFrame {
             }
             y1=y1+80;
         }
+    }
+    public void zerando(){
+        teste.setPontuação(0);
+        teste.zera(matriz1);
+        executa(matriz1, quad1);
+        setVisible(false);
     }
     
    

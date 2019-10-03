@@ -29,7 +29,7 @@ import javax.swing.*;
 public class Matriz {
 
     //Variaveis
-
+   
      int i=0; int j=0; 
      JLabel quad[][] = new JLabel [4][4];
      int matriz[][] = new int [4][4];
@@ -37,9 +37,13 @@ public class Matriz {
      int contador=0; int num;
 
      Random random= new Random(); 
-     Animação desliza =new Animação();
+    
       int pontuação=0;
 
+    public Matriz() {
+    }
+
+      
     public Matriz(int matriz[][]) {
 
         this.matriz=matriz;
@@ -93,13 +97,16 @@ public class Matriz {
      //funcao inserir na matriz
 
      public void inserir_matriz(int matriz[][]){
-         
+
          this.matriz=matriz;
+         if(verifica(this.matriz)==2048){  
+             Tela chamada = new Tela();
+                    chamada.Tela(pontuação);}
          if(verifica(this.matriz)==0){
          gerar_randomico();
          if(matriz[i][j]==0){
-             if(num==4) matriz[i][j]=4;
-             else matriz[i][j]=2;
+             if(num==4) matriz[i][j]=512;
+             else matriz[i][j]=512;
          }
          else inserir_matriz(this.matriz);
          }
@@ -117,7 +124,13 @@ public class Matriz {
 
   public void printar_matriz(int matriz[][]){ 
 
-     this.matriz=matriz;
+         try{
+    this.matriz=matriz;
+       
+}catch(NullPointerException e){
+    System.out.println("Error");
+}
+     
 
      System.out.println("");
 
@@ -314,6 +327,11 @@ public class Matriz {
             for(j=0;j<4;j++){
                 aux[i][j]=matriz[i][j];
                 if( matriz[i][j]==0) flag =1; 
+                if( matriz[i][j]==2048)
+                {
+                   return 2048;
+                    
+                }
             }
             if(flag==1) return 0;
         }
@@ -323,7 +341,9 @@ public class Matriz {
                esquerda(aux);
                direita(aux);
                 if(pont==pontuação){
-                    System.out.println("Perdeu!");
+                    Perdeu derrota = new Perdeu();
+                    derrota.Perdeu(pontuação);
+                    
                     return 1;
                 }
                 else{
@@ -333,6 +353,12 @@ public class Matriz {
            
            
    }
+
+    public void setPontuação(int pontuação) {
+        this.pontuação = pontuação;
+        this.pontuação=0;
+    }
+   
 }
 
 

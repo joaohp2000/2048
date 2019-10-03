@@ -37,6 +37,8 @@ public class First_face {
         
        //Pegando clique na label
     public void First_Face(){
+        
+        
             JFrame jf = new JFrame();
             
             
@@ -49,7 +51,8 @@ public class First_face {
       
        Creditos.addMouseListener(new MouseAdapter(){
         public void mouseClicked(MouseEvent evento){
-           System.out.println("jao corno");
+           System.out.println("Carlos Henrique Vieira Marques Ra:18720367");
+            System.out.println("Joao Henrique Pereira Ra:187");
         }
 });
 
