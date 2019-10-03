@@ -9,3 +9,4 @@ O projeto realiza marcação de pontos, e possibilita o usuário de reinicicar o
 e assim termina-lo.
 O jogo funciona em qualquer versão do Net Beans, testadas no Windows, para executar basta baixar o arquivo da master e copiar a pasta na
 aba de documentos do Net Beans. 
+Para verificar visualizar a tela de derrota pressione p e para vitória g;
