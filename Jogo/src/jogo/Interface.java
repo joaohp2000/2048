@@ -33,7 +33,8 @@ public class  Interface extends JFrame {
    Matriz teste =new Matriz(matriz);
    static int height;
    static int width;
-   
+   HttpExemplo Movi=new  HttpExemplo();
+   public String movimento;
    //Imagens
 
    ImageIcon N = new ImageIcon("n.png");
@@ -70,6 +71,9 @@ try{
 }catch(NullPointerException e){
     System.out.println("Error");
 }
+// usando http
+
+runMicroService();
        //Usando mouse
          //Comandos do Mouse
           cima.addMouseListener(new MouseAdapter(){
@@ -134,6 +138,7 @@ try{
                         teste.baixo(matriz1);
                        executa(matriz1,quad);
                         System.out.println("baixo");
+                        teste.inserir_matriz(matriz1);
                         break;
                     case 'd':
                        teste.direita(matriz1);
@@ -319,6 +324,59 @@ try{
         setVisible(false);
     }
     
-   
+   public void runMicroService() { //thread para a leitura dos dados do servidors
+       //System.out.println("teste");
+        Runnable Run;
+        Run = new Runnable() { //thread
+            public void run() {
+               // System.out.println("teste");
+                while(true){
+                    try {
+                        movimento=Movi.Exec();
+                        System.out.println(movimento);
+                    } catch (Exception ex) {
+                      //  Logger.getLogger(Printar.class.getName()).log(Level.SEVERE, null, ex);
+                      System.out.println("teste");
+                    }
+                    
+                    System.out.println("\nmovimento: "+ movimento);
+                    if(movimento.toString().contains("cima")){
+                        teste.cima(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("cima");
+                        teste.inserir_matriz(matriz1);
+                         executa(matriz1,quad);
+                    }else if(movimento.toString().contains("baixo")){
+                        teste.baixo(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("baixo");
+                        teste.inserir_matriz(matriz1);
+                    }else if(movimento.toString().contains("esquerda")){
+                        teste.esquerda(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("esquerda");
+                        teste.inserir_matriz(matriz1);
+                    }
+                    else if(movimento.toString().contains("direita")){
+                        teste.direita(matriz1);
+                       executa(matriz1,quad);
+                        System.out.println("direita");
+                        teste.inserir_matriz(matriz1);
+                    }
+                     
+                    else System.out.println("null");
+                    
+                    
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {}
+                }
+            }
+        };
+        Thread MS = new Thread(Run);
+        MS.start();  
+    }
 }
+
+
 
