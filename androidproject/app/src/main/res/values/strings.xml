@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">2048</string>
+    <string name="btn_cima">Cima</string>
+    <string name="btn_esquerda">Esquerda</string>
+    <string name="btn_direita">Direita</string>
+    <string name="btn_baixo">Baixo</string>
+</resources>
