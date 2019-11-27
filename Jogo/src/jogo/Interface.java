@@ -71,9 +71,7 @@ try{
 }catch(NullPointerException e){
     System.out.println("Error");
 }
-// usando http
-
-runMicroService();
+thread_microService();
        //Usando mouse
          //Comandos do Mouse
           cima.addMouseListener(new MouseAdapter(){
@@ -131,7 +129,7 @@ runMicroService();
                        executa(matriz1,quad);
                         System.out.println("cima");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
                         
                         break;
                     case 's':
@@ -139,21 +137,24 @@ runMicroService();
                        executa(matriz1,quad);
                         System.out.println("baixo");
                         teste.inserir_matriz(matriz1);
+                        executa(matriz1,quad);
                         break;
                     case 'd':
                        teste.direita(matriz1);
                        executa(matriz1,quad);
                         System.out.println("direita");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                         executa(matriz1,quad);
                         break;
                     case 'a':
                        teste.esquerda(matriz1);
                        executa(matriz1,quad);
                         System.out.println("esquerda");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
+               
                         break;
+                        
                     case 'g':
                          Tela chamada = new Tela();
                          chamada.Tela(teste.getPontuação());
@@ -170,27 +171,29 @@ runMicroService();
                        executa(matriz1,quad);
                         System.out.println("cima");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                         executa(matriz1,quad);
                         
                         break;
                     case 40:
                         teste.baixo(matriz1);
                        executa(matriz1,quad);
                         System.out.println("baixo");
+                        teste.inserir_matriz(matriz1);
+                        executa(matriz1,quad);
                         break;
                     case 39:
                        teste.direita(matriz1);
                        executa(matriz1,quad);
                         System.out.println("direita");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
                         break;
                     case 37:
                        teste.esquerda(matriz1);
                        executa(matriz1,quad);
                         System.out.println("esquerda");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
                         break;
                     
                 }
@@ -324,7 +327,7 @@ runMicroService();
         setVisible(false);
     }
     
-   public void runMicroService() { //thread para a leitura dos dados do servidors
+      public void thread_microService() { //thread para a leitura dos dados do servidors
        //System.out.println("teste");
         Runnable Run;
         Run = new Runnable() { //thread
@@ -340,24 +343,24 @@ runMicroService();
                     }
                     
                     System.out.println("\nmovimento: "+ movimento);
-                    if(movimento.toString().contains("cima")){
+                    if(movimento.contains("cima")){
                         teste.cima(matriz1);
                        executa(matriz1,quad);
                         System.out.println("cima");
                         teste.inserir_matriz(matriz1);
                          executa(matriz1,quad);
-                    }else if(movimento.toString().contains("baixo")){
+                    }else if(movimento.contains("baixo")){
                         teste.baixo(matriz1);
                        executa(matriz1,quad);
                         System.out.println("baixo");
                         teste.inserir_matriz(matriz1);
-                    }else if(movimento.toString().contains("esquerda")){
+                    }else if(movimento.contains("esquerda")){
                         teste.esquerda(matriz1);
                        executa(matriz1,quad);
                         System.out.println("esquerda");
                         teste.inserir_matriz(matriz1);
                     }
-                    else if(movimento.toString().contains("direita")){
+                    else if(movimento.contains("direita")){
                         teste.direita(matriz1);
                        executa(matriz1,quad);
                         System.out.println("direita");
@@ -377,6 +380,4 @@ runMicroService();
         MS.start();  
     }
 }
-
-
 
