@@ -10,3 +10,22 @@ e assim termina-lo.
 O jogo funciona em qualquer versão do Net Beans, testadas no Windows, para executar basta baixar o arquivo da master e copiar a pasta na
 aba de documentos do Net Beans. 
 Para verificar visualizar a tela de derrota pressione p e para vitória g;
+
+# Adicionais
+
+Foi implementando ao projeto webserive, cujo objeto é de realizar uma comunicação com outro aplicativo via WEB.
+
+# O jogo e App
+
+Os arquivos do Jogo e do App estão compactados é necessário baixar as pastas e extraí-las para região onde o App e o jogo serão testados. Adicionais
+
+# APP
+O app é divido em 2 partes, uma tela de menu onde o usuário clica em um botão para se iniciar a atividade. Na segunda tela, está as setas que realizam os comandos para o jogo.
+
+# Futuras Implementações
+
+Visa-se implementar Tensor-Flow e o assitente de voz para realizar as ações do jogo.
+
+
+
+
