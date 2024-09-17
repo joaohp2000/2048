@@ -127,28 +127,32 @@ try{
                        executa(matriz1,quad);
                         System.out.println("cima");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
                         
                         break;
                     case 's':
                         teste.baixo(matriz1);
                        executa(matriz1,quad);
                         System.out.println("baixo");
+                        teste.inserir_matriz(matriz1);
+                        executa(matriz1,quad);
                         break;
                     case 'd':
                        teste.direita(matriz1);
                        executa(matriz1,quad);
                         System.out.println("direita");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                         executa(matriz1,quad);
                         break;
                     case 'a':
                        teste.esquerda(matriz1);
                        executa(matriz1,quad);
                         System.out.println("esquerda");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
+               
                         break;
+                        
                     case 'g':
                          Tela chamada = new Tela();
                          chamada.Tela(teste.getPontuação());
@@ -165,27 +169,29 @@ try{
                        executa(matriz1,quad);
                         System.out.println("cima");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                         executa(matriz1,quad);
                         
                         break;
                     case 40:
                         teste.baixo(matriz1);
                        executa(matriz1,quad);
                         System.out.println("baixo");
+                        teste.inserir_matriz(matriz1);
+                        executa(matriz1,quad);
                         break;
                     case 39:
                        teste.direita(matriz1);
                        executa(matriz1,quad);
                         System.out.println("direita");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
                         break;
                     case 37:
                        teste.esquerda(matriz1);
                        executa(matriz1,quad);
                         System.out.println("esquerda");
                         teste.inserir_matriz(matriz1);
-               executa(matriz1,quad);
+                        executa(matriz1,quad);
                         break;
                     
                 }
